@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Exam</title>
+    <meta name='viewport'
+        content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <div id="buttons">
+        <a href="teacher" style="text-decoration: none">
+            <button id="teacher">I'm a Teacher</button>
+        </a>
+        <a href="student" style="text-decoration: none">
+            <button id="teacher">I'm a Student</button>
+        </a>
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            document.documentElement.requestFullscreen().catch((e) => {
+                console.log(e);
+            })
+        });
+
+        // document.onkeydown = function (e) {
+        //     if (e.keyCode == 116) {
+        //         alert('Not Allowed!');
+        //         e.stop();
+        //     }
+        // };
+        function disable() {
+            document.onkeydown = function (e) {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
