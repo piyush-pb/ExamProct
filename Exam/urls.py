@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Exam import views as ev
+from exam import views as ev
 
 urlpatterns = [
     path('', ev.index),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('check', ev.check),
     path(r'^makePaper$', ev.make),
     path('admin/', admin.site.urls),
+    path('teacher_signin', ev.login_teacher)
 ]
