@@ -12,10 +12,7 @@ def teacher(request):
     return render(request, 'teacher.html')
 
 def student(request):
-    if request.user.is_anonymous:
-        return render(request, "student_signin.html")
-    else:
-        return render(request, 'student.html')
+    return render(request, 'student.html')
 
 def sets(request):
     return render(request, 'set.html')
@@ -27,7 +24,7 @@ def make(request):
     print("Hiiiiiiii")
 
 
-# ================== creating a student login function ======================
+'''# ================== creating a student login function ======================
 
 def login_student(request):
     if request.method == 'POST':                   # checking if the method is POST
@@ -42,7 +39,7 @@ def login_student(request):
         else:                                                            
             return render(request, "index.html")                         #returning to homepage 
 
-    return render(request, "index.html")
+    return render(request, "index.html")'''
 
 
 # ==================== creating Teacher login function =========================
