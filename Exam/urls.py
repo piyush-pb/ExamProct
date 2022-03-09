@@ -25,4 +25,5 @@ urlpatterns = [
     path('check', ev.check),
     path(r'^makePaper$', ev.make),
     path('admin/', admin.site.urls),
+    path('teacher_signin', ev.login_teacher)
 ]
