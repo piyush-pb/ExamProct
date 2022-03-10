@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Exam.urls'
+ROOT_URLCONF = 'examProctor.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Exam.wsgi.application'
+WSGI_APPLICATION = 'examProctor.wsgi.application'
 
 
 # Database
