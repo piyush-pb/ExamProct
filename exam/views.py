@@ -23,6 +23,12 @@ def sets(request):
 def check(request):
     return render(request, 'check.html')
 
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
 '''# ================== creating a student login function ======================
 
 def login_student(request):
