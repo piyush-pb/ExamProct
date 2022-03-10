@@ -1,6 +1,9 @@
+from email import message
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
+
 
 # Create your views here.
 def index(request):
@@ -54,6 +57,11 @@ def login_teacher(request):
         if user is not None:
 
             return render(request, "teacher.html")
+        
         else:
-            return render(request, "index.html")
-
+            messages.error(request, "Please check your username or password , contact admin if problem persists")
+    
+    else:
+        messages.error(request, "")
+    return render(request, "teacher_signin.html")
+        
