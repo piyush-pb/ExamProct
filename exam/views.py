@@ -8,7 +8,7 @@ def index(request):
 
 def teacher(request):
     if request.user.is_anonymous:
-        return render(request, 'teacher_signin.html')
+        return render(request, 'tlogin.html')
     return render(request, 'teacher.html')
 
 def student(request):
@@ -19,10 +19,6 @@ def sets(request):
 
 def check(request):
     return render(request, 'check.html')
-
-def make(request):
-    print("Hiiiiiiii")
-
 
 '''# ================== creating a student login function ======================
 

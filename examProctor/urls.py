@@ -27,7 +27,6 @@ urlpatterns = [
     path('student', ev.student),
     path('set', ev.sets),
     path('check', ev.check),
-    path(r'^makePaper$', ev.make),
     path('admin/', admin.site.urls),
     path('teacher_signin', ev.login_teacher),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
