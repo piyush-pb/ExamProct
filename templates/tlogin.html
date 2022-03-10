@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -138,7 +139,7 @@ ul.topnav li a:hover{
     <hr> -->
     <form class="form-signin" method="post" action="/teacher_signin">
         {% csrf_token %}
-        <img class="mb-4" src="{static 'images/teacher.png'}" alt="" width="150" height="150">
+        <img class="mb-4" src="{% static 'images/teacher.png' %}" alt="" width="150" height="150">
         <h1 class="h3 mb-3 font-weight-normal"><b>Please Sign In</b></h1>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="Username" id="inputEmail" name="username" class="form-control" placeholder="Username" required
