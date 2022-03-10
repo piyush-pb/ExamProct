@@ -82,7 +82,7 @@ sqlparse==0.4.2
 # system-service==0.3
 systemd-python==234
 # ubuntu-advantage-tools==27.5
-ubuntu-drivers-common==0.0.0
+# ubuntu-drivers-common==0.0.0
 ufw==0.36
 unattended-upgrades==0.1
 unity-tweak-tool==0.0.7
