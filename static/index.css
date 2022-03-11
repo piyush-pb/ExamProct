@@ -167,7 +167,8 @@ div.icon{
     }
 
     .container{
-        padding-bottom: 20%;
+        padding-top: 20%;
+        padding-bottom: 40%;
     }
     div.youare{
         font-size: 50px;
