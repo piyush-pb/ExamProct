@@ -13,7 +13,7 @@ def index(request):
 
 def teacher(request):
     if request.user.is_anonymous:
-        return render(request, 'tlogin.html')
+        return render(request, 'teacher_signin.html')
     return render(request, 'teacher.html')
 
 def student(request):
