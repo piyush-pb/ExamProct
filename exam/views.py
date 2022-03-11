@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 import csv
 from csv import writer
 from datetime import date
+import sqlite3
 
 # Create your views here.
 def index(request):
@@ -84,51 +85,45 @@ def makePaper(request):
     d1 = today.strftime("%d%m%Y")
     paperCode = d1 + subCode + sem + sec        # today's data + subject code + semester + section
     
-    file = open('papers.csv')
-    csvreader = csv.reader(file)
-    header = []
-    header = next(csvreader)
-    rows = []
-    for row in csvreader:
-        rows.append(row)
+    sqliteConnection = sqlite3.connect('papers.sqlite3')
+    cursor = sqliteConnection.cursor()
 
-    data = [len(rows), paperCode, splits[6]]
-    with open('papers.csv', 'a') as f_object:
-        writer_object = writer(f_object)
-        writer_object.writerow(data)
-        f_object.close()
-    
+    sqlite_insert_query = """INSERT INTO papers
+                          (code, link) 
+                           VALUES 
+                          (?,?)"""
+    data_tuple = (paperCode, splits[6])
+    cursor.execute(sqlite_insert_query, data_tuple)
+    sqliteConnection.commit()
+    cursor.close()
+
     return render(request, 'teacher.html', {'code': paperCode})
 
 def startTest(request):
     data = request.POST
     code = data['code']             # paper code
     roll = data['roll']             # roll number
-    file = open('papers.csv')
-    csvreader = csv.reader(file)
-    header = []
-    header = next(csvreader)
-    rows = []
-    for row in csvreader:
-        rows.append(row)
-
-    file1 = open('submission.csv')
-    csvreader1 = csv.reader(file1)
-    header1 = []
-    header1 = next(csvreader1)
-    rows1 = []
-    for row in csvreader1:
-        rows1.append(row)
     
+    conn = sqlite3.connect("submissions.sqlite3")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM submissions")
+
+    rows = cur.fetchall()           # list of tuples
+
+    conn1 = sqlite3.connect("papers.sqlite3")
+    cur1 = conn1.cursor()
+    cur1.execute("SELECT * FROM papers")
+
+    rows1 = cur1.fetchall()           # list of tuples
+
     link = ''
-    for i in rows:
+    for i in rows1:
         if str(i[1]) == code:
             link = i[2]
-
+    
     # check if the student has appeared for the paper
-    flag = 0;
-    for l in range(len(rows1) - 1, -1, -1):
-        i = rows1[l]
+    flag = 0
+    for i in rows:
         if str(i[1]) == roll:
             if str(i[2]) == code:
                 if str(i[3]) == '1':
@@ -137,8 +132,8 @@ def startTest(request):
                     break
                 else:
                     flag = 0
-                    break
-
+                    break;
+    
     if (flag == 1):
         # paper submitted
         return render(request, 'test.html', {'code': 1, 'roll': data['roll'], 'paperCode': code})
@@ -151,19 +146,23 @@ def submitted(request, roll, code):
     url = (request.path).split("/")
     roll = int(url[2])
 
-    file = open('submission.csv')
-    csvreader = csv.reader(file)
-    header = []
-    header = next(csvreader)
-    rows = []
-    for row in csvreader:
-        rows.append(row)
+    sqliteConnection = sqlite3.connect('submissions.sqlite3')
+    cursor = sqliteConnection.cursor()
 
-    data = [len(rows), roll, code, 1]
-    with open('submission.csv', 'a') as f_object:
-        writer_object = writer(f_object)
-        writer_object.writerow(data)
-        f_object.close()
-        
+    cursor.execute("SELECT * FROM submissions")
+    rows = cursor.fetchall()
+
+    for i in rows:
+        if str(i[1]) == str(roll) and str(i[2]) == str(code):
+            return render(request, 'test.html', {'code': 1})
+
+    sqlite_insert_query = """INSERT INTO submissions
+                          (roll, code, submit) 
+                           VALUES 
+                          (?,?,?)"""
+    data_tuple = (roll,code,1)
+    cursor.execute(sqlite_insert_query, data_tuple)
+    sqliteConnection.commit()
+    cursor.close()        
 
     return render(request, 'test.html', {'code': 1})
