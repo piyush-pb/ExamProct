@@ -130,7 +130,7 @@ def startTest(request):
             codeFlag = 0
             break
 
-    if codeFlag == 1:
+    if codeFlag == 1 or len(rows1) == 0:
         return render(request, 'student.html', {"code": 3})
 
     link = ''
