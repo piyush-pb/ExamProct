@@ -73,9 +73,9 @@ def login_teacher(request):
 
 def makePaper(request):
     data = request.GET
-    subCode = data['code']
-    sem = data['sem']
-    sec = data['sec']
+    subCode = data['code'].upper()
+    sem = data['sem'].upper()
+    sec = data['sec'].upper()
     link = data['link']
 
     splits = link.split("/")
@@ -93,7 +93,12 @@ def makePaper(request):
                            VALUES 
                           (?,?)"""
     data_tuple = (paperCode, splits[6])
-    cursor.execute(sqlite_insert_query, data_tuple)
+
+    try:
+        cursor.execute(sqlite_insert_query, data_tuple)
+    except:
+        cursor.close()
+        return render(request, 'teacher.html', {'code': 3})     # this paper has been submitted before
     sqliteConnection.commit()
     cursor.close()
 

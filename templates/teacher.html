@@ -12,7 +12,7 @@
     <link href="" rel="stylesheet">
 </head>
 
-<body>
+<body onload="check()">
     <div id="head">
         Just give me the link of google form,<br/>
         I will conduct your exam cheating-free.
@@ -31,9 +31,14 @@
         <div id="note"></div>
     </form>
     <script>
+        function check() {
+            if ("{{code}}}" == "3") {
+                alert("Seems like you have submitted this paper before");
+            }
+        }
         var elem = document.getElementById("paperCode");
         var note = document.getElementById("note");
-        if ("{{code}}" != null) {
+        if ("{{code}}" != '' && "{{code}}" != '3') {
             elem.innerHTML = "Please keep this paper code: {{code}} <br/> Give this to your students at the time of exam.";
             note.innerHTML = "NOTE:You won't be able to see this code again. For more, contact admin";
         }
