@@ -18,14 +18,6 @@
         I will conduct your exam cheating-free.
     </div>
     <p></p>
-    <!-- <div id="options">
-        <a href="set" target="blank" style="text-decoration: none;">
-            <button id="set">Set Paper</button>
-        </a>
-        <a href="check" target="blank" style="text-decoration: none;">
-            <button id="set">Check Paper</button>
-        </a>
-    </div> -->
     <form method="GET" id="paper" action="makePaper">
         {% csrf_token %}
         <input placeholder="Subject Code" name="code" type="text">
@@ -34,7 +26,18 @@
         <p></p>
         <input class="textbox" type="text" name="link" placeholder="Paste the link of google form">
         <input type="submit" value="Submit">
+        <p></p>
+        <div id="paperCode"></div>
+        <div id="note"></div>
     </form>
+    <script>
+        var elem = document.getElementById("paperCode");
+        var note = document.getElementById("note");
+        if ("{{code}}" != null) {
+            elem.innerHTML = "Please keep this paper code: {{code}} <br/> Give this to your students at the time of exam.";
+            note.innerHTML = "NOTE:You won't be able to see this code again. For more, contact admin";
+        }
+    </script>
 </body>
 
 </html>

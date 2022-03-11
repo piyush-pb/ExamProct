@@ -26,11 +26,14 @@ urlpatterns = [
     path('teacher', ev.teacher),
     path('student', ev.student),
     path('set', ev.sets),
-    path('check', ev.check),
+    path('makePaper', ev.makePaper),
     path('admin/', admin.site.urls),
     path('teacher_signin', ev.login_teacher),
     path('about', ev.about),
     path('contact', ev.contact),
+    path('startTest', ev.startTest),
+    path('submitted/<int:roll>/<str:code>/', ev.submitted),
+    # path('submitted/roll<int:num>/', ev.submitted),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})
 ]

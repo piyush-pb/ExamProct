@@ -13,8 +13,12 @@
 </head>
 
 <body>
-    Hello world
-
+    <form method="post" action="startTest">
+        {% csrf_token %}
+        <input type="text" name="roll" placeholder="Enter your roll number">
+        <input type="text" name="code" placeholder="Enter the code">
+        <input type="submit" value="Start Test">
+    </form>
 </body>
 
 </html>
