@@ -121,6 +121,18 @@ def startTest(request):
 
     rows1 = cur1.fetchall()           # list of tuples
 
+    # check if the student has entered the correct paper code or not
+    codeFlag = 0
+    for i in rows1:
+        if str(i[1]) != code:
+            codeFlag = 1
+        else:
+            codeFlag = 0
+            break
+
+    if codeFlag == 1:
+        return render(request, 'student.html', {"code": 3})
+
     link = ''
     for i in rows1:
         if str(i[1]) == code:

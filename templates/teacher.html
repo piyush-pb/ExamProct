@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +11,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="" rel="stylesheet">
+    <link rel = "icon" href = "{% static 'images/aboutlogo.png' %}" type = "image/x-icon">
 </head>
 
 <body onload="check()">
@@ -32,8 +34,8 @@
     </form>
     <script>
         function check() {
-            if ("{{code}}}" == "3") {
-                alert("Seems like you have submitted this paper before");
+            if ("{{code}}" == "3") {
+                alert("Sorry, you have submitted this paper before. For more, contact the admin");
             }
         }
         var elem = document.getElementById("paperCode");

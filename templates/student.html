@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -10,15 +11,25 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="" rel="stylesheet">
+    <link rel = "icon" href = "{% static 'images/aboutlogo.png' %}" type = "image/x-icon">
 </head>
 
-<body>
+<body onload="check()">
     <form method="post" action="startTest">
         {% csrf_token %}
         <input type="text" name="roll" placeholder="Enter your roll number">
         <input type="text" name="code" placeholder="Enter the code">
         <input type="submit" value="Start Test">
     </form>
+
+    <script>
+        function check() {
+            if ("{{code}}" == "3") {
+                alert("Invalid paper code, Please contact your teacher.")
+            }
+        }
+    </script>
+
 </body>
 
 </html>
