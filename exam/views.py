@@ -9,28 +9,37 @@ from datetime import date
 import sqlite3
 
 # Create your views here.
+
+
 def index(request):
     return render(request, 'index.html')
+
 
 def teacher(request):
     if request.user.is_anonymous:
         return render(request, 'teacher_signin.html')
     return render(request, 'teacher.html')
 
+
 def student(request):
     return render(request, 'student.html')
+
 
 def sets(request):
     return render(request, 'set.html')
 
+
 def check(request):
     return render(request, 'check.html')
+
 
 def about(request):
     return render(request, 'about.html')
 
+
 def contact(request):
     return render(request, 'contact.html')
+
 
 '''# ================== creating a student login function ======================
 
@@ -58,14 +67,15 @@ def login_teacher(request):
 
         # ======== authentication ===========
 
-        user = authenticate(username = user, password = passw)
+        user = authenticate(username=user, password=passw)
         if user is not None:
 
             return render(request, "teacher.html")
-        
+
         else:
-            messages.error(request, "Please check your username or password , contact admin if problem persists")
-    
+            messages.error(
+                request, "Please check your username or password , contact admin if problem persists")
+
     else:
         messages.error(request, "")
     return render(request, "teacher_signin.html")
@@ -79,12 +89,12 @@ def makePaper(request):
     link = data['link']
 
     splits = link.split("/")
-    # print(splits)
 
     today = date.today()
     d1 = today.strftime("%d%m%Y")
-    paperCode = d1 + subCode + sem + sec        # today's data + subject code + semester + section
-    
+    # today's data + subject code + semester + section
+    paperCode = d1 + subCode + sem + sec
+
     sqliteConnection = sqlite3.connect('papers.sqlite3')
     cursor = sqliteConnection.cursor()
 
@@ -98,11 +108,13 @@ def makePaper(request):
         cursor.execute(sqlite_insert_query, data_tuple)
     except:
         cursor.close()
-        return render(request, 'teacher.html', {'code': 3})     # this paper has been submitted before
+        # this paper has been submitted before
+        return render(request, 'teacher.html', {'code': 3})
     sqliteConnection.commit()
     cursor.close()
 
     return render(request, 'teacher.html', {'code': paperCode})
+
 
 def startTest(request):
     data = request.POST
@@ -122,13 +134,13 @@ def startTest(request):
                     # multiple session found
                     return render(request, 'student.html', {'code': 2})
                 else:
-                    break;
+                    break
 
     # control comes here this means multiple sessions not found
     # so wrting on the sessions table that this roll number is online with this paper
     query = """INSERT INTO sessions
-                (roll, code, online) 
-                VALUES 
+                (roll, code, online)
+                VALUES
                 (?,?,?)"""
 
     for i in sessions:
@@ -140,11 +152,11 @@ def startTest(request):
                 cur0.close()
                 break
     else:
-        data_tuple = (roll,code,1)
+        data_tuple = (roll, code, 1)
         cur0.execute(query, data_tuple)
         conn0.commit()
         cur0.close()
-    
+
     conn = sqlite3.connect("submissions.sqlite3")
     cur = conn.cursor()
     cur.execute("SELECT * FROM submissions")
@@ -173,7 +185,7 @@ def startTest(request):
     for i in rows1:
         if str(i[1]) == code:
             link = i[2]
-    
+
     # check if the student has appeared for the paper
     flag = 0
     for i in rows:
@@ -185,15 +197,15 @@ def startTest(request):
                     break
                 else:
                     flag = 0
-                    break;
-    
+                    break
+
     if (flag == 1):
         # paper submitted
         return render(request, 'test.html', {'code': 1, 'roll': data['roll'], 'paperCode': code})
     else:
         # paper not submitted
         return render(request, 'test.html', {'code': code, 'roll': data['roll'], 'paperCode': link})
-    
+
 
 def submitted(request, roll, code):
     url = (request.path).split("/")
@@ -220,9 +232,9 @@ def submitted(request, roll, code):
                           (roll, code, submit) 
                            VALUES 
                           (?,?,?)"""
-    data_tuple = (roll,code,1)
+    data_tuple = (roll, code, 1)
     cursor.execute(sqlite_insert_query, data_tuple)
     sqliteConnection.commit()
-    cursor.close()        
+    cursor.close()
 
     return render(request, 'test.html', {'code': 1})
