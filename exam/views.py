@@ -108,6 +108,42 @@ def startTest(request):
     data = request.POST
     code = data['code']             # paper code
     roll = data['roll']             # roll number
+
+    # check for online session
+    conn0 = sqlite3.connect("sessions.sqlite3")
+    cur0 = conn0.cursor()
+    cur0.execute("SELECT * FROM sessions")
+
+    sessions = cur0.fetchall()       # list of tuples
+    for i in sessions:
+        if str(i[1]) == roll:
+            if str(i[2]) == code:
+                if str(i[3]) == "1":
+                    # multiple session found
+                    return render(request, 'student.html', {'code': 2})
+                else:
+                    break;
+
+    # control comes here this means multiple sessions not found
+    # so wrting on the sessions table that this roll number is online with this paper
+    query = """INSERT INTO sessions
+                (roll, code, online) 
+                VALUES 
+                (?,?,?)"""
+
+    for i in sessions:
+        if str(i[1]) == roll:
+            if str(i[2]) == code:
+                query = """UPDATE sessions set online = 1 where roll = ? and code = ?"""
+                cur0.execute(query, (roll, code))
+                conn0.commit()
+                cur0.close()
+                break
+    else:
+        data_tuple = (roll,code,1)
+        cur0.execute(query, data_tuple)
+        conn0.commit()
+        cur0.close()
     
     conn = sqlite3.connect("submissions.sqlite3")
     cur = conn.cursor()
@@ -162,6 +198,13 @@ def startTest(request):
 def submitted(request, roll, code):
     url = (request.path).split("/")
     roll = int(url[2])
+
+    conn0 = sqlite3.connect("sessions.sqlite3")
+    cur0 = conn0.cursor()
+    query = """UPDATE sessions set online = 0 where roll = ? and code = ?"""
+    cur0.execute(query, (roll, code))
+    conn0.commit()
+    cur0.close()
 
     sqliteConnection = sqlite3.connect('submissions.sqlite3')
     cursor = sqliteConnection.cursor()
