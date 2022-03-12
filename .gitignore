@@ -1,3 +1,4 @@
+examProctor/settings.py
 db.sqlite3
 submissions.sqlite3
 papers.sqlite3
