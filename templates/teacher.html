@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="{% static 'teacherStyles.css' %}" rel="stylesheet">
-    <link rel="icon" href="{% static 'images/aboutlogo.png' %}" type="image/x-icon">
+    <link rel = "icon" href = "{% static 'images/aboutlogo.png' %}" type = "image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
@@ -24,43 +24,44 @@
 
     <nav>
         <ul class="topnav">
-            <li><a href="/">EXAMPROCTOR</a></li>
+            <li><a href="/">Exam Proctor</a></li>
             <li class="topnav-right"><a href="about">About</a></li>
             <li class="topnav-right"><a href="contact">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="container" id="section-1-gradient">
-        <div class="row">
-            <div class="col-12">
-                <div id="head">
-                    <h2 class="large">
-                        Just Give Me the Link of Google Form, I Will Conduct Your Exam Cheating-Free.
-                    </h2>
-                </div>
-                <p></p>
-                <form method="GET" id="paper" action="makePaper">
-                    {% csrf_token %}
-                    <div class="leftSide-col">
-                        <h3>Subject Code</h3>
-                        <input required placeholder="Subject Code" name="code" type="text">
-                        <h3>Semester</h3>
-                        <input required placeholder="Semester" name="sem" type="text">
-                        <h3>Section</h3>
-                        <input placeholder="Section" name="sec" type="text">
-                        <p></p>
-                        <h3>Paste the Link of Google Form</h3>
-                        <input required class="textbox" type="text" name="link" placeholder="Paste here">
-                        <br><br><br>
-                        <input required class="button" type="submit" value="Submit">
-                        <p></p>
-                        <div id="paperCode"></div>
-                        <div id="note"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
+ <div class="container" id="section-1-gradient">
+   <div class="row">
+    <div class="col-12">
+    <div id="head">
+        <h2 class="large">
+        Just Give Me the Link of Google Form, I Will Conduct Your Exam Cheating-Free.
+       </h2>
     </div>
+    <p></p>
+    <form method="GET" id="paper" action="makePaper">
+        {% csrf_token %}
+        <div class="leftSide-col">
+        <h3>Subject Code</h3>
+        <input placeholder="Subject Code" name="code" type="text">
+        <h3>Semester</h3>
+        <input placeholder="Semester" name="sem" type="text">
+        <h3>Section</h3>
+        <input placeholder="Section" name="sec" type="text">
+        <p></p>
+        <h3>Paste the Link of Google Form</h3>
+        <input class="textbox" type="text" name="link" placeholder="Paste here">
+        <br><br><br>
+        <input class="button" type="submit" value="Submit">
+        <p></p>
+        <br><br>
+        <div id="paperCode"></div>
+        <div id="note"></div>
+        </div>
+    </form>
+     </div>
+   </div>
+ </div>
     <script>
         function check() {
             if ("{{code}}" == "3") {

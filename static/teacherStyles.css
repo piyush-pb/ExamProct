@@ -46,13 +46,13 @@ ul.topnav li a:active{
 }
 /* ###### Body default ###### */
 
-.container{
+/* .container{
     width: 100%;
     margin: auto; /*will place elements in center and even distribution of elements*/
     padding-top: 3%;
     padding-bottom: 3%;
     font-family: 'Ubuntu', sans-serif;
-}
+} */
 
 .row{
     width: 100%;
@@ -92,15 +92,14 @@ ul.topnav li a:active{
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
     background: linear-gradient(#076DFF,#65a5ff);
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 p{
     font-size: 15px;
     line-height: 1.2;
-}
-
-div.leftSide-col{
-    margin-left: 30%;
 }
 
 h2.large{
@@ -123,7 +122,11 @@ input[type="text"]{
 form h3{
     color: white;
 }
-
+.leftSide-col{
+    margin: auto;
+    padding-left: 35%;
+    padding-right: 35%;
+}
 .button{
     font-size: 15px;
     font-weight:500;
@@ -168,10 +171,11 @@ form h3{
         padding-top: 20%;
         padding-bottom: 40%;
     }
+    .leftSide-col{
+        margin: auto;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 
 }
 
-#paperCode, #note {
-    color: white;
-    font-family: 'Ubuntu', sans-serif;
-}
