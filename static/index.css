@@ -34,6 +34,7 @@ ul.topnav li a{
     text-align: center;
     padding: 14px;
     color: black;
+    font-size: 20px;
 }
 
 ul.topnav li a:hover{
