@@ -171,3 +171,7 @@ form h3{
 
 }
 
+#paperCode, #note {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
