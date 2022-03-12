@@ -43,16 +43,16 @@
                     {% csrf_token %}
                     <div class="leftSide-col">
                         <h3>Subject Code</h3>
-                        <input placeholder="Subject Code" name="code" type="text">
+                        <input required placeholder="Subject Code" name="code" type="text">
                         <h3>Semester</h3>
-                        <input placeholder="Semester" name="sem" type="text">
+                        <input required placeholder="Semester" name="sem" type="text">
                         <h3>Section</h3>
                         <input placeholder="Section" name="sec" type="text">
                         <p></p>
                         <h3>Paste the Link of Google Form</h3>
-                        <input class="textbox" type="text" name="link" placeholder="Paste here">
+                        <input required class="textbox" type="text" name="link" placeholder="Paste here">
                         <br><br><br>
-                        <input class="button" type="submit" value="Submit">
+                        <input required class="button" type="submit" value="Submit">
                         <p></p>
                         <div id="paperCode"></div>
                         <div id="note"></div>
