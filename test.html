@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Test</title>
+    <meta name='viewport'
+        content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="{% static 'testStyles.css' %}" rel="stylesheet">
+    <link rel = "icon" href = "{% static 'images/aboutlogo.png' %}" type = "image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+</head>
+
+<body onload="load()">
+    <div class="container" id="section-1-gradient">
+        <div class="row">
+            <div class="col-12">
+
+    <div class="instructions" id="inst" style="display: none;">
+        <h2 class="large">
+        Instructions: <br><br>
+        <div class="inst">
+            1. Do not exit the full screen mode after the exam starts. <br><br>
+            2. Do not change the Tab after the exam starts. <br><br>
+            3. Do not turn off your phone/PC after the exam starts. <br><br>
+            4. In case you don't follow the above instructions, it will lead to your absence in the exam. <br><br>
+            <p></p></div>
+        <br><br><br>
+        <div class="but">
+        <input class="button" type="button" value="Start" onclick="fullscreen()">
+        </div>
+    </h2>
+    </div>
+
+    <center>
+        <iframe style="display: none;" id="test" src="https://docs.google.com/forms/d/e/{{paperCode}}/viewform?embedded=true"
+            width="640" height="494" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </center>
+
+    <div id="goBack" style="display: none;">
+        Test ended...
+        <a href="/"><input type="button" value="Home"></a>
+    </div>
+</div>
+</div>
+</div>
+    <script>
+        function getScreen() {
+            return document.fullscreenElement
+                || document.webkitFullscreenElement
+                || document.mozFullScreenElement
+                || document.msFullScreenElement
+        }
+        function load() {
+            var objects = document.getElementById("inst");
+            var form = document.getElementById("test");
+            var back = document.getElementById("goBack");
+            if ("{{code}}" == "1") {
+                back.style.display = ''
+            }
+            else {
+                objects.style.display = ''
+            }
+        }
+        function fullscreen() {
+            var objects = document.getElementById("inst");
+            var form = document.getElementById("test");
+            objects.remove();
+            form.style.display = '';
+            document.documentElement.requestFullscreen().catch((e) => {
+                console.log(e);
+            })
+        }
+        document.addEventListener("fullscreenchange", () => {
+            var back = document.getElementById("goBack");
+            if (getScreen() == null) {
+                var form = document.getElementById("test");
+                form.style.display = 'none';
+                back.style.display = ''
+                const http = new XMLHttpRequest;
+                const url = "/submitted/{{roll}}/{{code}}";
+                http.open("GET", url);
+                http.send();
+                http.onreadystatechange = (e) => {
+                    console.log(e)
+                }
+            }
+        })
+        window.addEventListener("keydown", function (e) {
+            if (e.ctrlKey) {
+                if (e.shiftKey) {
+                    if (e.keyCode === 73) {
+                        e.preventDefault()
+                        console.log("pressed ctrl+shift+I")
+                    }
+                }
+
+            }
+        })
+
+        window.addEventListener("keydown", function (e) {
+            if (e.ctrlKey) {
+                if (e.keyCode === 9) {
+                    e.preventDefault()
+                    console.log("pressed ctrl+tab")
+
+            }
+        }})
+        
+        window.addEventListener("keydown", function (e) {
+            if (e.ctrlKey) {
+                if (e.keyCode === 9) {
+                    e.preventDefault()
+                    console.log("pressed ctrl+tab")
+
+            }
+        }})
+        window.addEventListener("keydown", function (e) {
+            if (e.ctrlKey) {
+                if (e.keyCode === 48) {
+                    e.preventDefault()
+                    console.log("pressed ctrl+0")
+                }else if(e.keyCode === 49){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+1")
+                }else if(e.keyCode === 50){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+2")
+                }else if(e.keyCode === 51){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+3")
+                }else if(e.keyCode === 52){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+4")
+                }else if(e.keyCode === 53){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+5")
+                }else if(e.keyCode === 54){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+6")
+                }else if(e.keyCode === 55){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+7")
+                }else if(e.keyCode === 56){
+
+                    e.preventDefault()
+                    console.log("pressed ctrl+8")
+                }else if(e.keyCode === 57){
+
+                     e.preventDefault()
+                    console.log("pressed ctrl+9")
+                } 
+            }
+        })
+
+
+
+                
+
+        window.addEventListener("keydown", function (e) {
+            if (e.altKey) {
+                e.preventDefault()
+                console.log("alt key pressed")
+            }
+            if (e.altKey){
+                if (e.keyCode === 9){
+                    e.preventDefault()
+                    console.log("alt + tab is pressed")
+                   
+                }
+            }
+        })
+
+        document.addEventListener("visibilitychange", function() {
+            document.title = document.visibilityState;
+            console.log(document.visibilityState)
+            
+        });
+
+            
+        
+
+    </script>
+</body>
+
+</html>
