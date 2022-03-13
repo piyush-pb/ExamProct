@@ -268,12 +268,3 @@ def submitted(request, roll, code):
     cursor.close()
 
     return render(request, 'test.html', {'code': 1})
-
-
-def home(request):
-    conn0 = sqlite3.connect("sessions.sqlite3")
-    cur0 = conn0.cursor()
-    query = """UPDATE sessions set online = 0 where roll = ? and code = ?"""
-    cur0.execute(query, (roll, code))
-    conn0.commit()
-    cur0.close()
