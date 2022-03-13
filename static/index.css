@@ -38,11 +38,11 @@ ul.topnav li a{
 }
 
 ul.topnav li a:hover{
-    background-color: #0068cf;
+    background-color: #202020;
     color: #fff;
 }
 ul.topnav li a:active{
-    background-color: #0068cf;
+    background-color: #202020;
     color: #fff;
 }
 
