@@ -162,7 +162,7 @@
                     console.log("pressed ctrl+8")
                 }else if(e.keyCode === 57){
 
-                    e.preventDefault()
+                     e.preventDefault()
                     console.log("pressed ctrl+9")
                 } 
             }
@@ -174,14 +174,23 @@
 
         window.addEventListener("keydown", function (e) {
             if (e.altKey) {
-                if (e.keyCode === 9) {
+                e.preventDefault()
+                console.log("alt key pressed")
+            }
+            if (e.altKey){
+                if (e.keyCode === 9){
                     e.preventDefault()
-                    console.log("pressed ctrl+tab")
+                    console.log("alt + tab is pressed")
+                   
                 }
             }
         })
 
-
+        document.addEventListener("visibilitychange", function() {
+            document.title = document.visibilityState;
+            console.log(document.visibilityState)
+            
+        });
 
             
         
