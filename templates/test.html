@@ -116,12 +116,9 @@
         }})
         
         window.addEventListener("keydown", function (e) {
-            if (e.ctrlKey) {
-                if (e.keyCode === 9) {
-                    e.preventDefault()
-                    console.log("pressed ctrl+tab")
-
-            }
+            if (e.keyCode === 123) {
+                e.preventDefault()
+                console.log("prevented F12 ")
         }})
         window.addEventListener("keydown", function (e) {
             if (e.ctrlKey) {
