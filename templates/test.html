@@ -65,6 +65,13 @@
 </div>
 </div>
     <script>
+        window.addEventListener("keydown", checkKey, false);
+        function checkKey(key) {
+            // console.log(key.keyCode);
+            if (key.keyCode == "17" && key.keyCode == "9") {
+                console.log("heii");
+            }
+        }
         function getScreen() {
             return document.fullscreenElement
                 || document.webkitFullscreenElement

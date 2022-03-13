@@ -23,6 +23,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', ev.index),
+    path('home', ev.index),
     path('teacher', ev.teacher),
     path('student', ev.student),
     path('set', ev.sets),

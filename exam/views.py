@@ -191,25 +191,6 @@ def startTest(request):
                     break
 
     # control comes here this means multiple sessions not found
-    # so wrting on the sessions table that this roll number is online with this paper
-    query = """INSERT INTO sessions
-                (roll, code, online)
-                VALUES
-                (?,?,?)"""
-
-    for i in sessions:
-        if str(i[1]) == roll:
-            if str(i[2]) == code:
-                query = """UPDATE sessions set online = 1 where roll = ? and code = ?"""
-                cur0.execute(query, (roll, code))
-                conn0.commit()
-                cur0.close()
-                break
-    else:
-        data_tuple = (roll, code, 1)
-        cur0.execute(query, data_tuple)
-        conn0.commit()
-        cur0.close()
 
     link = ''
     for i in rows1:
@@ -234,6 +215,25 @@ def startTest(request):
         return render(request, 'test.html', {'code': 1, 'roll': data['roll'], 'paperCode': code})
     else:
         # paper not submitted
+        # so set this session online
+        query = """INSERT INTO sessions
+                (roll, code, online)
+                VALUES
+                (?,?,?)"""
+
+        for i in sessions:
+            if str(i[1]) == roll:
+                if str(i[2]) == code:
+                    query = """UPDATE sessions set online = 1 where roll = ? and code = ?"""
+                    cur0.execute(query, (roll, code))
+                    conn0.commit()
+                    cur0.close()
+                    break
+        else:
+            data_tuple = (roll, code, 1)
+            cur0.execute(query, data_tuple)
+            conn0.commit()
+            cur0.close()
         return render(request, 'test.html', {'code': code, 'roll': data['roll'], 'paperCode': link})
 
 
@@ -268,3 +268,12 @@ def submitted(request, roll, code):
     cursor.close()
 
     return render(request, 'test.html', {'code': 1})
+
+
+def home(request):
+    conn0 = sqlite3.connect("sessions.sqlite3")
+    cur0 = conn0.cursor()
+    query = """UPDATE sessions set online = 0 where roll = ? and code = ?"""
+    cur0.execute(query, (roll, code))
+    conn0.commit()
+    cur0.close()
