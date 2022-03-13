@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="max-age=200" />
+    <!-- <link rel="stylesheet" href="../static/testStyles.css"> -->
 </head>
 
 <body onload="load()">
@@ -42,8 +43,9 @@
             3. Do not change the Tab after the exam starts. <br><br>
             4. Do not turn off your phone/PC after the exam starts. <br><br>
             5. In case you don't follow the above instructions, it will lead to your absence in the exam. <br><br>
+            <h2 class="inst2">ALL THE BEST </h2>
             <p></p></div>
-        <br><br><br>
+        <br>
         <div class="but">
         <input class="button" type="button" value="Start" onclick="fullscreen()">
         </div>
@@ -52,11 +54,11 @@
 
     <center>
         <iframe style="display: none;" id="test" src="https://docs.google.com/forms/d/e/{{paperCode}}/viewform?embedded=true"
-            width="640" height="494" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            width="800" height="1250" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </center>
 
     <div id="goBack" style="display: none;">
-        <p class="para">Test Ended... <br><br></p>
+        <p class="para">Test Ended... <br><br> <div class="inst3">Your Response is Recorded Successfully, Thanks For Giving the Test</div>  <br><br></p>
         <a class="underline" href="/"><input class="button" type="button" value="Home"></a>
     </div>
 </div>

@@ -4,6 +4,7 @@ body{
 }
 header{
     display: block;
+    animation: slide 1s forwards;
 }
 
 /* ###### Nav bar ###### */
@@ -12,8 +13,6 @@ nav{
     display: block;
     width: 100%;
     margin: 0;
-    color: black;
-    font-size: 20px;
 }
 
 nav ul{
@@ -38,16 +37,15 @@ ul.topnav li a{
     min-height: 16px;
     text-align: center;
     padding: 14px;
-    color: black;
-    font-size: 20px;
+    color: #666;
 }
 
 ul.topnav li a:hover{
-    background-color: #0080ff;
+    background-color: #202020;
     color: #fff;
 }
 ul.topnav li a:active{
-    background-color: #0080ff;
+    background-color: #202020;
     color: #fff;
 }
 
@@ -104,12 +102,14 @@ label{
     font-size: 30px;
     font-weight: 600;
     color: rgb(45, 45, 45);
+    animation: slide 1s forwards;
 }
 
 p{
     font-size: 15px;
     line-height: 1.2;
     color: #666;
+    animation: slide 1s forwards;
 }
 h1{
     color: #fff;
@@ -117,6 +117,16 @@ h1{
     margin: 30px;
     line-height: 70px;
     text-align: center;
+    animation: slide 1s forwards;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 div.box{
@@ -132,12 +142,14 @@ div.box{
 div.icon{
     width: 100%;
     margin-bottom: 10px;
+    animation: slide 1s forwards;
 }
 
 .icon img{
     width: 100px;
     height: 100px;
     border-radius: 5px;
+    animation: slide 1s forwards;
 }
 
 /* ###### Mobile ###### */
@@ -164,4 +176,3 @@ div.icon{
         font-size: 50px;
     }
 }
-

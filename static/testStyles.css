@@ -34,16 +34,14 @@ ul.topnav li a{
     min-height: 16px;
     text-align: center;
     padding: 14px;
-    color: black;
-    font-size: 20px;
+    color: #666;
 }
-
 ul.topnav li a:hover{
-    background-color: #0080ff;
+    background-color: #202020;
     color: #fff;
 }
 ul.topnav li a:active{
-    background-color: #0080ff;
+    background-color: #202020;
     color: #fff;
 }
 
@@ -94,10 +92,11 @@ ul.topnav li a:active{
 
 h2.large{
     color: #fff;
-    font-size: 25px;
+    font-size: 30px;
     margin: auto;
     text-align: center;
-    padding-top: 10%;
+    padding-top: 7%;
+    animation: slide 1s forwards;
 }
 div.inst{
     color: #fff;
@@ -115,6 +114,23 @@ div.inst{
     100% {
         opacity: 1;
     }
+}
+
+div.inst2{
+    color: #fff;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: auto;
+    text-align: center;
+    animation: slide 1s forwards;
+}
+div.inst3{
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: auto;
+    text-align: center;
+    animation: slide 1s forwards;
 }
 div.but{
     text-align: center;
@@ -143,7 +159,7 @@ div.but{
 }
 #goBack{
     margin: 0;
-    background: #201c1c;
+    background: #202020;
     /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
@@ -164,7 +180,7 @@ a.underline{
     text-decoration: none;
 }
 #test{
-    background: #201c1c;
+    background: #202020;
     /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
