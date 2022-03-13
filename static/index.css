@@ -159,7 +159,7 @@ button a{
 }
 
 button:hover{
-    background-color: rgb(31, 117, 151);;
+    background-color: rgb(31, 117, 151);
 }
 
 button a:hover{
@@ -212,4 +212,3 @@ div.icon{
         font-size: 50px;
     }
 }
-

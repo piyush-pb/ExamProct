@@ -12,6 +12,8 @@ nav{
     display: block;
     width: 100%;
     margin: 0;
+    color: black;
+    font-size: 20px;
 }
 
 nav ul{
@@ -36,7 +38,8 @@ ul.topnav li a{
     min-height: 16px;
     text-align: center;
     padding: 14px;
-    color: #666;
+    color: black;
+    font-size: 20px;
 }
 
 ul.topnav li a:hover{
@@ -90,11 +93,11 @@ ul.topnav li a:active{
 /* ###### Body Custom ###### */
 
 #bgcolor{
-    background: #076DFF;
-    background: -webkit-linear-gradient(#076DFF,#65a5ff);
+    background: #202020;
+    /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
-    background: linear-gradient(#076DFF,#65a5ff);
+    background: linear-gradient(#076DFF,#65a5ff); */
     font-family: 'Ubuntu', sans-serif;
 }
 label{

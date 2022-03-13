@@ -2,6 +2,7 @@ body{
     line-height: 1;
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
+    /* background-color: #201c1c; */
 }
 /* ###### Nav bar ###### */
 
@@ -33,7 +34,8 @@ ul.topnav li a{
     min-height: 16px;
     text-align: center;
     padding: 14px;
-    color: #666;
+    color: black;
+    font-size: 20px;
 }
 
 ul.topnav li a:hover{
@@ -80,11 +82,11 @@ ul.topnav li a:active{
 /* ###### Body Custom ###### */
 
 #section-1-gradient{
-    background: #076DFF;
-    background: -webkit-linear-gradient(#076DFF,#65a5ff);
+    background: #201c1c;
+    /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
-    background: linear-gradient(#076DFF,#65a5ff);
+    background: linear-gradient(#076DFF,#65a5ff); */
     position: absolute;
     height: 100%;
     width: 100%;
@@ -104,6 +106,15 @@ div.inst{
     margin: auto;
     text-align: center;
     padding: 40px;
+    animation: slide 1s forwards;
+}
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 div.but{
     text-align: center;
@@ -121,18 +132,22 @@ div.but{
     text-align: center;
     margin: auto;
     text-decoration: none;
+    border-radius: 20px;
+    font-family: monospace;
+    background-color: rgb(42, 148, 190);
+    border: 2px solid orange;
 }
 .button:hover{
     color: #fff;
-    background-color: #0054ca;
+    background-color: rgb(31, 117, 151);;
 }
 #goBack{
     margin: 0;
-    background: #076DFF;
-    background: -webkit-linear-gradient(#076DFF,#65a5ff);
+    background: #201c1c;
+    /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
-    background: linear-gradient(#076DFF,#65a5ff);
+    background: linear-gradient(#076DFF,#65a5ff); */
     color: white;
     font-size: 30px;
     text-align: center;
@@ -149,11 +164,11 @@ a.underline{
     text-decoration: none;
 }
 #test{
-    background: #076DFF;
-    background: -webkit-linear-gradient(#076DFF,#65a5ff);
+    background: #201c1c;
+    /* background: -webkit-linear-gradient(#076DFF,#65a5ff);
     background: -o-linear-gradient(#076DFF, #65a5ff);
     background: -moz-linear-gradient(#076DFF, #65a5ff);
-    background: linear-gradient(#076DFF,#65a5ff);
+    background: linear-gradient(#076DFF,#65a5ff); */
 }
 
 /* ###### Mobile ###### */
@@ -182,4 +197,3 @@ a.underline{
     }
 
 }
-
