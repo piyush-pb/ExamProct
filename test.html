@@ -46,20 +46,13 @@
     </center>
 
     <div id="goBack" style="display: none;">
-        <p class="para">Test Ended... <br><br> <div class="inst3">Your Response is Recorded Successfully, Thanks For Giving the Test</div>  <br><br></p>
-        <a class="underline" href="/"><input class="button" type="button" value="Home"></a>
+        Test ended...
+        <a href="/"><input type="button" value="Home"></a>
     </div>
 </div>
 </div>
 </div>
     <script>
-        window.addEventListener("keydown", checkKey, false);
-        function checkKey(key) {
-            // console.log(key.keyCode);
-            if (key.keyCode == "17" && key.keyCode == "9") {
-                console.log("heii");
-            }
-        }
         function getScreen() {
             return document.fullscreenElement
                 || document.webkitFullscreenElement
@@ -123,9 +116,12 @@
         }})
         
         window.addEventListener("keydown", function (e) {
-            if (e.keyCode === 123) {
-                e.preventDefault()
-                console.log("prevented F12 ")
+            if (e.ctrlKey) {
+                if (e.keyCode === 9) {
+                    e.preventDefault()
+                    console.log("pressed ctrl+tab")
+
+            }
         }})
         window.addEventListener("keydown", function (e) {
             if (e.ctrlKey) {

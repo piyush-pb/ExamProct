@@ -2,7 +2,7 @@ body{
     line-height: 1;
     margin: 0;
 }
-
+ 
 /* ###### Nav bar ###### */
 
 nav{
@@ -10,7 +10,7 @@ nav{
     width: 100%;
     margin: 0;
 }
-
+ 
 nav ul{
     background-color: rgb(228, 228, 228);
     overflow: hidden;
@@ -38,11 +38,11 @@ ul.topnav li a{
 }
 
 ul.topnav li a:hover{
-    background-color: #0068cf;
+    background-color: #202020;
     color: #fff;
 }
 ul.topnav li a:active{
-    background-color: #0068cf;
+    background-color: #202020;
     color: #fff;
 }
 
