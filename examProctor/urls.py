@@ -33,6 +33,7 @@ urlpatterns = [
     path('contact', ev.contact),
     path('startTest', ev.startTest),
     path('submitted/<int:roll>/<str:code>/', ev.submitted),
+    path('logout', ev.logout),
     # path('submitted/roll<int:num>/', ev.submitted),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})

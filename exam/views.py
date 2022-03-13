@@ -116,10 +116,64 @@ def makePaper(request):
     return render(request, 'teacher.html', {'code': paperCode})
 
 
+# def logout(request):
+#     data = request.POST
+#     print(data)
+#     roll = data['roll']
+#     code = data['code']
+
+#     # check for any session
+#     conn0 = sqlite3.connect("sessions.sqlite3")
+#     cur0 = conn0.cursor()
+#     cur0.execute("SELECT * FROM sessions")
+
+#     sessions = cur0.fetchall()       # list of tuples
+#     for i in sessions:
+#         if str(i[1]) == roll:
+#             if str(i[2]) == code:
+#                 if str(i[3]) == "0":
+#                     # already logged out
+#                     return render(request, 'student.html', {'code': 4})
+#                 else:
+#                     query = """UPDATE sessions set online = 0 where roll = ? and code = ?"""
+#                     cur0.execute(query, (roll, code))
+#                     conn0.commit()
+#                     cur0.close()
+#                     # logged out successfully
+#                     return render(request, 'student.html', {'code': 5})
+
+#     return render(request, 'student.html', {'code': 4})
+
+
 def startTest(request):
     data = request.POST
     code = data['code']             # paper code
     roll = data['roll']             # roll number
+
+    conn = sqlite3.connect("submissions.sqlite3")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM submissions")
+
+    rows = cur.fetchall()           # list of tuples
+
+    conn1 = sqlite3.connect("papers.sqlite3")
+    cur1 = conn1.cursor()
+    cur1.execute("SELECT * FROM papers")
+
+    rows1 = cur1.fetchall()           # list of tuples
+
+    # check if the student has entered the correct paper code or not
+    codeFlag = 0
+    for i in rows1:
+        if str(i[1]) != code:
+            codeFlag = 1
+        else:
+            codeFlag = 0
+            break
+
+    if codeFlag == 1 or len(rows1) == 0:
+        # invalid paper code
+        return render(request, 'student.html', {"code": 3})
 
     # check for online session
     conn0 = sqlite3.connect("sessions.sqlite3")
@@ -156,30 +210,6 @@ def startTest(request):
         cur0.execute(query, data_tuple)
         conn0.commit()
         cur0.close()
-
-    conn = sqlite3.connect("submissions.sqlite3")
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM submissions")
-
-    rows = cur.fetchall()           # list of tuples
-
-    conn1 = sqlite3.connect("papers.sqlite3")
-    cur1 = conn1.cursor()
-    cur1.execute("SELECT * FROM papers")
-
-    rows1 = cur1.fetchall()           # list of tuples
-
-    # check if the student has entered the correct paper code or not
-    codeFlag = 0
-    for i in rows1:
-        if str(i[1]) != code:
-            codeFlag = 1
-        else:
-            codeFlag = 0
-            break
-
-    if codeFlag == 1 or len(rows1) == 0:
-        return render(request, 'student.html', {"code": 3})
 
     link = ''
     for i in rows1:
